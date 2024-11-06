@@ -1,0 +1,15 @@
+{
+  "name": "blockchain-election-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm-run-all --parallel ganache migrate copy-contracts frontend",
+    "ganache": "ganache-cli --deterministic --accounts 10 --defaultBalanceEther 100",
+    "migrate": "timeout /t 5 && cd smart-contracts && truffle migrate --reset",
+    "copy-contracts": "timeout /t 10 && xcopy /Y \"smart-contracts\\build\\contracts\\Election.json\" \"frontend\\src\\contracts\\\"",
+    "frontend": "cd frontend && npm start"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
